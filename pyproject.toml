@@ -5,8 +5,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "langchain>=1.2.7",
     "langchain-community>=0.4.1",
     "langchain-groq>=1.1.1",
     "langgraph>=1.0.7",
+    "streamlit>=1.53.1",
     "tavily-python>=0.7.19",
 ]
