@@ -1,33 +1,58 @@
 import os
-from dotenv import load_dotenv
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langgraph.prebuilt import create_react_agent
-from langchain_core.messages import HumanMessage
+import warnings
+from typing import TypedDict, List
+from langgraph.graph import StateGraph, END
+from langchain_google_vertexai import ChatVertexAI
+from langchain_core.messages import SystemMessage, HumanMessage
 
-load_dotenv()
-
-if not os.getenv("GOOGLE_API_KEY"):
-    raise ValueError("Lütfen .env dosyasına GOOGLE_API_KEY ekle!")
-
-# 2. Tool Tanımlama
-def get_weather(city: str) -> str:
-    """Get weather for a given city."""
-    return f"{city} şehrinde hava şu an güneşli ve 25 derece!"
-
-model = ChatGoogleGenerativeAI(
-    model="gemini-2.5-pro",
-    temperature=0,
-    api_key=os.getenv("GOOGLE_API_KEY")
+warnings.filterwarnings("ignore")
+llm = ChatVertexAI(
+    model="gemini-2.5-flash",
+    temperature=0
 )
-agent = create_react_agent(model, tools=[get_weather])
 
-print("--- Ajan Başlatılıyor (API Key Modu) ---")
+class AgentState(TypedDict):
+    task: str
+    research_result: str
+    final_report: str
 
-inputs = {"messages": [HumanMessage(content="İstanbul'da hava nasıl?")]}
+def researcher(state: AgentState):
+    print("\n🔎 [Araştırmacı]: Konu hakkında bilgi topluyorum...")
+    task = state["task"]
+    
+    prompt = f"Şu konu hakkında 3 maddelik kısa ve teknik bilgi ver: {task}"
+    response = llm.invoke([HumanMessage(content=prompt)])
+    
+    return {"research_result": response.content}
 
-for chunk in agent.stream(inputs, stream_mode="values"):
-    message = chunk["messages"][-1]
-    if message.type == "ai":
-        print(f"[AI]: {message.content}")
-    elif message.type == "tool":
-        print(f"[Tool Çıktısı]: {message.content}")
+def writer(state: AgentState):
+    print("✍️  [Yazar]: Raporu yazıyorum...")
+    research_data = state["research_result"]
+    
+    prompt = f"""
+    Aşağıdaki teknik verileri kullanarak profesyonel, Türkçe bir özet rapor yaz.
+    Veri: {research_data}
+    """
+    response = llm.invoke([HumanMessage(content=prompt)])
+    
+    return {"final_report": response.content}
+
+workflow = StateGraph(AgentState)
+
+workflow.add_node("researcher", researcher)
+workflow.add_node("writer", writer)
+
+workflow.set_entry_point("researcher")
+workflow.add_edge("researcher", "writer")
+workflow.add_edge("writer", END)
+
+app = workflow.compile()
+
+print("--- Research Agent Başlatılıyor (Vertex AI) ---")
+inputs = {"task": "Unreal Engine 5 Nanite teknolojisi nedir?"}
+
+for output in app.stream(inputs):
+    pass
+
+final_output = output["writer"]["final_report"]
+print(f"\n📄 [NİHAİ RAPOR]:\n{final_output}")
