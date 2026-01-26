@@ -21,6 +21,7 @@ This is a project for practicing langgraph, tensorflow, langchain, tavily API
 I used streamlit for rapid prototyping for easy design managements and helping to embed matplotlib charts and graphics to web page
 Streamlits easy sidebar feature boosted me about what to do part?
 ### How to run?
-```
+
+```bash
 streamlit run filename.py
 ```
