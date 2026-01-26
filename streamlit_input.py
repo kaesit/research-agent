@@ -71,20 +71,22 @@ def create_menu_item(label):
 
 with st.sidebar:
     st.header("MENU")
-    
     create_menu_item("🏠 Home")
     create_menu_item("📊 Charts")
     create_menu_item("🧠 Model Inferences")
-    data_pages = ["    📦 Models", "    💾 Datasets", "    🧪 Experiments"]
-    is_expanded = st.session_state.active_page in data_pages
+    #data_pages = ["    📦 Models", "    💾 Datasets", "    🧪 Experiments"]
+    #is_expanded = st.session_state.active_page in data_pages
     #with st.expander("📂 Data Pages", expanded=is_expanded):
         #for page in data_pages:
             #create_menu_item(page
-            
+    create_menu_item("📦 Models")
+    create_menu_item("💾 Datasets")
+    create_menu_item("🧪 Experiments")
     create_menu_item("📄 Generate Report")
     create_menu_item("🗺️ Map Search")
     
     st.markdown("---")
+    create_menu_item("⚙️ Settings")
     create_menu_item("🔒 Authentication")
     create_menu_item("🚪 Logout")
 
