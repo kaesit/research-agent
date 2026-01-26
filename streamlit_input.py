@@ -1,10 +1,22 @@
 import streamlit as st
+import streamlit_antd_components as sac
 import os
 import warnings
 from typing import TypedDict, List
 from langgraph.graph import StateGraph, END
 from langchain_google_vertexai import ChatVertexAI
 from langchain_core.messages import SystemMessage, HumanMessage
+
+st.set_page_config(
+    page_title="Agent Research App",
+    page_icon="🔬",
+    layout="wide",
+    menu_items={
+        'Get Help': 'https://www.extremelycoolapp.com/help',
+        'Report a bug': "https://www.extremelycoolapp.com/bug",
+        'About': "# This is a header. This is an *extremely* cool app!"
+    }
+)
 
 warnings.filterwarnings("ignore")
 llm = ChatVertexAI(
@@ -49,7 +61,25 @@ workflow.add_edge("writer", END)
 
 app = workflow.compile()
 st.title("AI Research Agent")
-st.header("Hello!")
+
+with st.sidebar:
+    selected_item = sac.menu([
+        sac.MenuItem('Home', icon='house'),
+        sac.MenuItem('Charts', icon='bar-chart'),
+        sac.MenuItem('Model Inferences', icon='cpu'),
+        sac.MenuItem('Data Pages', icon='database', children=[
+            sac.MenuItem('Models', icon='box'),
+            sac.MenuItem('Datasets', icon='table'),
+            sac.MenuItem('Experiments', icon='card-checklist'),
+        ]),
+        
+        sac.MenuItem('Generate Report', icon='file-text'),
+        sac.MenuItem('Map Search', icon='map'),
+        sac.MenuItem("Authentication", icon='fingerprint'),
+        sac.MenuItem('Settings', icon='gear'),
+        sac.MenuItem(type='divider'), 
+        sac.MenuItem('Logout', icon='box-arrow-right'),
+    ], open_all=False) # open_all=False ile kapalı gelir, tıklayınca açılır.
 st.write("Welcome to the AI Research Agent powered by Vertex AI. Please enter your research topic below.")
 topic = st.text_input("Enter your research topic:")
 if topic:

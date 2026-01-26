@@ -13,5 +13,6 @@ dependencies = [
     "langgraph>=1.0.7",
     "python-dotenv>=1.2.1",
     "streamlit>=1.53.1",
+    "streamlit-antd-components>=0.3.2",
     "tavily-python>=0.7.19",
 ]
