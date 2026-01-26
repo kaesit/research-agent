@@ -129,6 +129,9 @@ elif "Models" in page:
 elif page == "📊 Charts":
     st.title("Grafikler")
     st.bar_chart({"data": [10, 20, 30, 40]})
+elif page == "📄 Generate Report":
+    st.title("Raporlar")
+    st.cache_data()
 
 else:
     st.title(f"{page}")
