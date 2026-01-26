@@ -49,7 +49,8 @@ workflow.add_edge("writer", END)
 app = workflow.compile()
 
 print("--- Research Agent Başlatılıyor (Vertex AI) ---")
-inputs = {"task": "Unreal Engine 5 Nanite teknolojisi nedir?"}
+your_input = input("Araştırma konusu nedir: ")
+inputs = {"task": your_input}
 
 for output in app.stream(inputs):
     pass
