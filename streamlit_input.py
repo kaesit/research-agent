@@ -24,11 +24,9 @@ if "active_page" not in st.session_state:
 if "last_report" not in st.session_state:
     st.session_state.last_report = None
 
-# --- 3. MODEL VE AGENT KURULUMU ---
 # Performans için modeli cache'liyoruz, her seferinde tekrar bağlanmasın
 @st.cache_resource
 def get_graph():
-    # Model (Gemini 1.5 Flash kullanıyoruz)
     llm = ChatVertexAI(
         model="gemini-2.5-flash", 
         temperature=0
@@ -79,9 +77,9 @@ with st.sidebar:
     create_menu_item("🧠 Model Inferences")
     data_pages = ["    📦 Models", "    💾 Datasets", "    🧪 Experiments"]
     is_expanded = st.session_state.active_page in data_pages
-    with st.expander("📂 Data Pages", expanded=is_expanded):
-        for page in data_pages:
-            create_menu_item(page)
+    #with st.expander("📂 Data Pages", expanded=is_expanded):
+        #for page in data_pages:
+            #create_menu_item(page
             
     create_menu_item("📄 Generate Report")
     create_menu_item("🗺️ Map Search")
