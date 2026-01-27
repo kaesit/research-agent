@@ -1,0 +1,12 @@
+langchain>=1.2.7
+langchain-community>=0.4.1
+langchain-google-genai>=4.2.0
+langchain-google-vertexai>=3.2.1
+langchain-groq>=1.1.1
+langgraph>=1.0.7
+plotly>=6.5.2
+python-dotenv>=1.2.1
+scipy>=1.17.0
+streamlit>=1.53.1
+streamlit-antd-components>=0.3.2
+tavily-python>=0.7.19

@@ -1,7 +1,7 @@
 [project]
 name = "research-agent"
 version = "0.1.0"
-description = "Add your description here"
+description = "Basic Agent Project with Streamlit"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
