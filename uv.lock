@@ -1290,6 +1290,18 @@ wheels = [
 ]
 
 [[package]]
+name = "mrcfile"
+version = "1.5.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/56/22/8834f44c2455291e241fb2543c2d5d4f0fe58fd63ad0f42e86570f0b1161/mrcfile-1.5.4.tar.gz", hash = "sha256:8fa9eb2e237d87d99b301c61bf02854dd85a451db25eefcbe142c09b36d8d601", size = 52052606, upload-time = "2025-01-22T12:36:10.924Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/6f/cb/3f4ee8233f30c7926f1ed4885ff32b79ec7ce3210370f43e1cb2b385bed6/mrcfile-1.5.4-py2.py3-none-any.whl", hash = "sha256:195370a13db5ce19600499f9bdf90fd9888979bf39de19a17c19024436c6f4c2", size = 45012, upload-time = "2025-01-22T12:02:38.502Z" },
+]
+
+[[package]]
 name = "multidict"
 version = "6.7.0"
 source = { registry = "https://pypi.org/simple" }
@@ -2423,6 +2435,7 @@ dependencies = [
     { name = "scipy" },
     { name = "streamlit" },
     { name = "streamlit-antd-components" },
+    { name = "streamlit-molstar" },
     { name = "tavily-python" },
 ]
 
@@ -2439,6 +2452,7 @@ requires-dist = [
     { name = "scipy", specifier = ">=1.17.0" },
     { name = "streamlit", specifier = ">=1.53.1" },
     { name = "streamlit-antd-components", specifier = ">=0.3.2" },
+    { name = "streamlit-molstar", specifier = ">=0.4.21" },
     { name = "tavily-python", specifier = ">=0.7.19" },
 ]
 
@@ -2748,6 +2762,17 @@ dependencies = [
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b5/dc/1ed6266b606e3b494b9af3e2c310ea6cbe2e967aa18873d03c5b267b4c81/streamlit_antd_components-0.3.2-py3-none-any.whl", hash = "sha256:5ae28496127202ed266ea167649436a15f3d548a4805ee5d992c6fc0fe103fd6", size = 2805502, upload-time = "2024-01-19T07:11:42.614Z" },
 ]
+
+[[package]]
+name = "streamlit-molstar"
+version = "0.4.21"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "mrcfile" },
+    { name = "numpy" },
+    { name = "streamlit" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/1d/41/c7a6939e9c400ba9874dfd8abbfcae17d8e8228cc43a4370098577319c11/streamlit-molstar-0.4.21.tar.gz", hash = "sha256:65ebbc554e163455685dd96e39ca503e7c2af76bab7a61ccce25e43fae0f1b40", size = 35205127, upload-time = "2024-01-18T13:00:14.461Z" }
 
 [[package]]
 name = "tavily-python"
