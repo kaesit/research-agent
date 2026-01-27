@@ -1,3 +1,5 @@
+import plotly.express as px
+import pandas as pd
 import streamlit as st
 import os
 import warnings
@@ -5,6 +7,7 @@ from typing import TypedDict, List
 from langgraph.graph import StateGraph, END
 from langchain_google_vertexai import ChatVertexAI
 from langchain_core.messages import HumanMessage
+from numpy.random import default_rng as rng
 
 # --- 1. SAYFA KONFIGÜRASYONU ---
 st.set_page_config(
@@ -129,6 +132,30 @@ elif "Models" in page:
 elif page == "📊 Charts":
     st.title("Grafikler")
     st.bar_chart({"data": [10, 20, 30, 40]})
+elif page == "🧠 Model Inferences":
+    st.title("Model Çıkarımları")
+    
+    hist_data = [
+        rng(0).standard_normal(200) - 2,
+        rng(1).standard_normal(200),
+        rng(2).standard_normal(200) + 2,
+    ]
+
+    df = pd.DataFrame({
+        "value": hist_data[0].tolist() + hist_data[1].tolist() + hist_data[2].tolist(),
+        "group": (["Group 1"] * 200) + (["Group 2"] * 200) + (["Group 3"] * 200)
+    })
+
+    fig = px.histogram(
+        df,
+        x="value",
+        color="group",
+        marginal="rug",
+        nbins=40,
+        opacity=0.6
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
 elif page == "📄 Generate Report":
     st.title("Raporlar")
     st.cache_data()
