@@ -39,6 +39,7 @@ python-dotenv>=1.2.1
 scipy>=1.17.0
 streamlit>=1.53.1
 streamlit-antd-components>=0.3.2
+streamlit-molstar>=0.4.21
 tavily-python>=0.7.19
 ```
 ##### How to install?
