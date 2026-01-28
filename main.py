@@ -49,7 +49,7 @@ def get_graph():
     def writer(state: AgentState):
         research_data = state["research_result"]
         prompt = f"""
-        When asked a question, use the following technical data to write an answer in the language the question was asked in.
+        When asked a question, use the following technical data to write an answer very detailed.
         Data: {research_data}
         """
         response = llm.invoke([HumanMessage(content=prompt)])
@@ -73,6 +73,13 @@ def create_menu_item(label):
         st.rerun()
 
 with st.sidebar:
+    
+    with st.container(border=True):
+        st.image("https://www.google.com/favicon.ico")
+        st.markdown("## AI Research Agent")
+        st.markdown('''
+        :rainbow[Built with Google Vertex AI] :orange[Assistant] :green[it's an artificial intelligence assistant]
+        :rainbow[that writes research] :rainbow[and reports as text.]''')
     st.header("MENU")
     create_menu_item("🏠 Home")
     create_menu_item("📊 Charts")
