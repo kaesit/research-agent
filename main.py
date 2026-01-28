@@ -195,6 +195,17 @@ elif page == "📦 Models":
                 st.text("Model Adı")
                 st.metric("Accuracy", "82%", "+12%")
                 st.metric("Model Inference", "250 run/ms ", " -30 run/ms")
+elif page == "💾 Datasets":
+    st.title("Veri Seti Yönetimi")
+    st.info("Burada kullanılan veri setleri listelenecek.")
+    for _ in range(1):  # rows
+        cols = st.columns(4, border=True)
+        for col in cols:
+            with col:
+                st.image("https://img.freepik.com/free-vector/database-floating-squares_78370-6689.jpg?semt=ais_hybrid&w=740&q=80")
+                st.text("Veriseti Adı")
+                st.text(f"{5000} train | {4212} test | {9212} total samples")
+    st.warning("Bu sayfa hala yapım aşamasında ve gerçek olmayan test verileri kullanıyor!")
 elif page == "🧪 Experiments":
     st.title("Deney Yönetimi")
     st.warning("Bu sayfa hala yapım aşamasında bu yüzden gerçek ve gerçek olmayan test verileri kullanıyor!")
