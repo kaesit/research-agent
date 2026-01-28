@@ -125,16 +125,17 @@ if page == "🏠 Home":
         st.subheader("📄 Final Rapor")
         st.markdown(st.session_state.last_report)
 
-elif "Models" in page:
-    st.title("Model Yönetimi")
-    st.info("Burada eğitilen OncoMind modelleri listelenecek.")
+#elif "Models" in page:
+    #st.title("Model Yönetimi")
+    #st.info("Burada eğitilen OncoMind modelleri listelenecek.")
 
 elif page == "📊 Charts":
     st.title("Grafikler")
+    st.error("Bu sayfa hala yapım aşamasında ve gerçek olmayan test verileri kullanıyor!")
     st.bar_chart({"data": [10, 20, 30, 40]})
 elif page == "🧠 Model Inferences":
     st.title("Model Çıkarımları")
-    
+    st.error("Bu sayfa hala yapım aşamasında ve gerçek olmayan test verileri kullanıyor!")
     hist_data = [
         rng(0).standard_normal(200) - 2,
         rng(1).standard_normal(200),
@@ -157,8 +158,22 @@ elif page == "🧠 Model Inferences":
 
     st.plotly_chart(fig, use_container_width=True)
 
+elif page == "📦 Models":
+    st.title("Model Yönetimi")
+    st.error("Bu sayfa hala yapım aşamasında ve gerçek olmayan test verileri kullanıyor!")
+    st.subheader("Modeller")
+    st.info("Burada eğitilen OncoMind modelleri listelenecek.")
+    for _ in range(3):  # rows
+        cols = st.columns(4, border=True)
+        for col in cols:
+            with col:
+                st.image("https://www.shutterstock.com/image-vector/ai-model-icon-designed-linear-600nw-2510832345.jpg")
+                st.text("Model Adı")
+                st.metric("Accuracy", "82%", "+12%")
+                st.metric("Model Inference", "250 run/ms ", " -30 run/ms")
 elif page == "🧪 Experiments":
     st.title("Deney Yönetimi")
+    st.warning("Bu sayfa hala yapım aşamasında bu yüzden gerçek ve gerçek olmayan test verileri kullanıyor!")
     st.markdown("## 🧊 3D View")
     with st.container(border=True):
         st_molstar('molstar_examples/complex.pdb', 'molstar_examples/complex.xtc', key='4')
@@ -238,6 +253,7 @@ elif page == "📄 Generate Report":
 
 elif page == "🗺️ Map Search":
     # Mock data is used for testing
+    st.warning("Bu sayfa hala yapım aşamasında ve gerçek olmayan test verileri kullanıyor!")
     st.title("Harita Araması 🗺️")
     st.subheader("Coğrafi Kanser Hastası Veri Analizi")
     df = pd.DataFrame(
