@@ -132,7 +132,24 @@ if page == "🏠 Home":
 elif page == "📊 Charts":
     st.title("Grafikler")
     st.error("Bu sayfa hala yapım aşamasında ve gerçek olmayan test verileri kullanıyor!")
-    st.bar_chart({"data": [10, 20, 30, 40]})
+    col1, col2 = st.columns([1, 1], gap="small", border=True)
+    with col1:
+        st.bar_chart({"data": [10, 20, 30, 40]})
+    with col2:
+        df = px.data.iris()
+        fig = px.scatter(
+            df,
+            x="sepal_width",
+            y="sepal_length",
+            color="species",
+            size="petal_length",
+            hover_data=["petal_width"],
+        )
+
+        event = st.plotly_chart(fig, key="iris", on_select="rerun")
+    with st.container(border=True):
+        st.subheader("Grafikler")
+        
 elif page == "🧠 Model Inferences":
     st.title("Model Çıkarımları")
     st.error("Bu sayfa hala yapım aşamasında ve gerçek olmayan test verileri kullanıyor!")

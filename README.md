@@ -27,7 +27,7 @@ Streamlits easy sidebar feature boosted me about what to do part?
 ### How to run?
 
 ```bash
-streamlit run filename.py
+streamlit run main.py
 ```
 ### Requirements
 ##### requirements.txt
