@@ -42,15 +42,15 @@ def get_graph():
 
     def researcher(state: AgentState):
         task = state["task"]
-        prompt = f"Şu konu hakkında 3 maddelik kısa ve teknik bilgi ver: {task}"
+        prompt = f"Give a very detailed research report about this: {task}"
         response = llm.invoke([HumanMessage(content=prompt)])
         return {"research_result": response.content}
 
     def writer(state: AgentState):
         research_data = state["research_result"]
         prompt = f"""
-        Aşağıdaki teknik verileri kullanarak profesyonel, Türkçe bir özet rapor yaz.
-        Veri: {research_data}
+        When asked a question, use the following technical data to write an answer in the language the question was asked in.
+        Data: {research_data}
         """
         response = llm.invoke([HumanMessage(content=prompt)])
         return {"final_report": response.content}
