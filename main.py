@@ -301,7 +301,58 @@ elif page == "🗺️ Map Search":
     )
 
     st.map(df, latitude="col1", longitude="col2", size="col3", color="col4")
+elif page == "⚙️ Settings":
+    st.title("Settings")
+    st.info("This page provides some options to improve user experience.")
+    with st.container(border=True):
+        st.subheader("Profile Informations")
+        col1, col2 = st.columns([1, 1], border=True)
+        with col1:
+            name = st.text_input("Name")
+            surname = st.text_input("Surname")
+            age = st.text_input("Age")
+            birth_date = st.date_input("When's your birthday?")
+        with col2:
+            with st.container(border=False):
+                profile_image = st.image("https://www.w3schools.com/howto/img_avatar.png", width=100)
+                profile_image_uploader = st.file_uploader("Upload Profile Image", type=["png", "jpg", "jpeg"])
+            email = st.text_input("Email")
+            occupation = st.text_input("Occupation")
+            country = st.text_input("Country")
+        st.button("Save Profile", type="primary", use_container_width=True)
+    col1, col2 = st.columns([1, 1], border=True)
+    with col1:
+        st.subheader("Appearance")
+        theme_options = ["System", "Light", "Dark"]
+        selection = st.segmented_control(
+            "Directions", theme_options, selection_mode="single", default="System"
+        )
+        font_options = st.multiselect(
+            "Font Type?",
+            ["Verdana", "Consolas", "JetBrains Mono", "VVDS Fifties", "SF Pro", "Helvetica",
+            "Bauhaus", "Bahnschrift", "Cascadia Code", "source Code Pro"
+            ],
+        )
+        font_size = st.number_input("Insert a number", min_value=12, max_value=48)
+    
 
+    with col2:
+        st.subheader("Preferences")
+        interest_options = st.multiselect(
+            "Area of interest?",
+            ["Physics", "Math", "General Culture", "Chemistry", "Biology", "Computer Science",
+            "History", "Geography", "Literature", "Fine Arts"
+            ],
+        )
+        info_data = {
+            "AI Laws" : "https://ai.google/responsible-ai/ai-principles/",
+            "Advertise Versions" : "https://esadabdullahkosedag.framer.website/contact",
+            "Authentication" : "https://esadabdullahkosedag.framer.website/services",
+        }
+        for i in info_data:
+            with st.popover(i):
+                st.info(f"More about {info_data[i]}")
+    st.button("Save Settings", type="primary", use_container_width=True)
 else:
     st.title(f"{page}")
     st.write("Bu sayfa yapım aşamasında...")
