@@ -216,7 +216,7 @@ elif page == "📦 Models":
                 st.image("https://www.shutterstock.com/image-vector/ai-model-icon-designed-linear-600nw-2510832345.jpg")
                 st.text("Model Adı")
                 st.metric("Accuracy", "82%", "+12%")
-                st.metric("Model Inference", "250 run/ms ", " -30 run/ms")
+                st.metric("Model Inference", "250 ms ", " +30 ms", delta_color="inverse")
 elif page == "💾 Datasets":
     st.title("Veri Seti Yönetimi")
     st.info("Burada kullanılan veri setleri listelenecek.")
@@ -261,8 +261,8 @@ elif page == "🧪 Experiments":
     with col2:
         with st.container(border=True):
             st.subheader("System Usage")
-            st.metric("CPU Usage", "42%", "+3%") # Mock data
-            st.metric("Memory", "8.1 GB", "-0.5 GB") # Mock data
+            st.metric("CPU Usage", "42%", "+3%",  delta_color="inverse") # Mock data
+            st.metric("Memory", "8.1 GB", "-0.5 GB", delta_color="inverse") # Mock data
     st.markdown("## 🗺️ Map")
     with st.container(border=True):
         # Mock data is used for testing
