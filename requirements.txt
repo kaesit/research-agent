@@ -1,3 +1,4 @@
+google-auth
 langchain>=1.2.7
 langchain-community>=0.4.1
 langchain-google-genai>=4.2.0

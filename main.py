@@ -30,10 +30,30 @@ if "last_report" not in st.session_state:
 
 @st.cache_resource
 def get_graph():
-    llm = ChatVertexAI(
-        model="gemini-2.5-flash", 
-        temperature=0
-    )
+    try:
+        if "gcp_service_account" in st.secrets:
+            service_account_info = st.secrets["gcp_service_account"]
+            
+            creds = service_account.Credentials.from_service_account_info(service_account_info)
+            
+            llm = ChatVertexAI(
+                model="gemini-2.5-flash",
+                temperature=0,
+                credentials=creds,
+                project=service_account_info["project_id"]
+            )
+            print("✅ Streamlit Cloud: Service Account ile bağlanıldı.")
+            
+        else:
+            llm = ChatVertexAI(
+                model="gemini-2.5-flash",
+                temperature=0
+            )
+            print("✅ Local: Gcloud default credentials ile bağlanıldı.")
+
+    except Exception as e:
+        st.error(f"Kimlik doğrulama hatası: {e}")
+        st.stop()
 
     class AgentState(TypedDict):
         task: str
