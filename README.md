@@ -1,5 +1,5 @@
 # Research Agent
-![Uygulama Ekran Görüntüsü](assets/demo.png)
+![Uygulama Ekran Görüntüsü](/assets/app_image.png)
 [Demo Link](https://research-agent-vhhllfhvuvvzrt8t5hxb24.streamlit.app/)
 ## Description
 This is a project for practicing langgraph, tensorflow, langchain, tavily API
