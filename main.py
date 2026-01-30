@@ -42,7 +42,7 @@ def get_graph():
                 model="gemini-2.5-flash",
                 temperature=0,
                 credentials=creds,
-                project=service_account_info["100579539084805318929"]
+                project=service_account_info["project_id"]
             )
             print("✅ Streamlit Cloud: Service Account ile bağlanıldı.")
             
