@@ -237,23 +237,13 @@ elif page == "🧪 Experiments":
     st.markdown("## 📊 Analytics")
 
     col1, col2 = st.columns([2, 1], gap="small")
-    mock_df = pd.DataFrame(
-        [
-            ["bob", "a"],
-            ["sue", "b"],
-            ["sue", "c"],
-            ["joe", "c"],
-            ["bill", "d"],
-            ["max", "b"],
-        ],
-        columns=["A", "B"],
-    )
+    molecule_df = pd.read_csv("./datasets/CHEMBL1978_nonredundant.csv")
 
     with col1:
         with st.container(border=True):
             st.subheader("DataFrame")
             st.dataframe(
-                mock_df,
+                molecule_df,
                 use_container_width=True,
                 height=350
             )
