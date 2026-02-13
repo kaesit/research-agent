@@ -64,7 +64,7 @@ def get_graph():
 
     def researcher(state: AgentState):
         task = state["task"]
-        prompt = f"Give a very detailed research report about this: {task}"
+        prompt = f"Give a very detailed research report about this: {task} if there is not enough information do not make up, just report that there is not enough information about this topic what do you want to know else"
         response = llm.invoke([HumanMessage(content=prompt)])
         return {"research_result": response.content}
 
