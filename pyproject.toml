@@ -5,6 +5,7 @@ description = "Basic Agent Project with Streamlit"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "google-auth>=2.47.0",
     "langchain>=1.2.7",
     "langchain-community>=0.4.1",
     "langchain-google-genai>=4.2.0",
@@ -13,6 +14,7 @@ dependencies = [
     "langgraph>=1.0.7",
     "plotly>=6.5.2",
     "python-dotenv>=1.2.1",
+    "qiskit>=2.3.0",
     "scipy>=1.17.0",
     "streamlit>=1.53.1",
     "streamlit-antd-components>=0.3.2",
