@@ -12,3 +12,6 @@ wheels/
 .streamlit/
 eskikodlar.txt
 agentproject-485419-74722f66267f.json
+
+# Python Files
+njit.py
