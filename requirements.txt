@@ -16,3 +16,4 @@ qiskit
 qiskit-ibm-runtime
 matplotlib
 py-spy
+taichi==1.7.2
